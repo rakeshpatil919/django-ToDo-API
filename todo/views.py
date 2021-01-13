@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import TaskSerializer
+from .serializers import TaskSerializer, UserSerializer
 from .models import Task
 
 # Create your views here.
@@ -42,7 +42,6 @@ def taskUpdate(request, pk):
 @api_view(['POST'])
 def taskCreate(request):
     serializer = TaskSerializer(data=request.data)
-    print(request)
     if serializer.is_valid():
         serializer.save()
         
